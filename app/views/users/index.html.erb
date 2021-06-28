@@ -1,0 +1,38 @@
+<%= render "shared/flash" %>
+<div class="top">
+  <div class="top-main">
+    <div class="container">
+      <div class="row col-lg-6">
+        <div class="form-frame">
+          <div class="form-area">
+            <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+            <%= search_form_for @q, url:search_rooms_path do |f| %>
+              <%= f.label "", "エリア" %>
+              <%= f.search_field :room_name_or_room_introduction_or_address_cont, class: "form-control mb-4", placeholder: "東京" %>
+              <%= f.submit "探す", class: "form-control btn-primary mb-4" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+		<div class="area-box m-5">
+			<h4 class="section-title">おすすめエリア</h4>
+			<div class="row">
+				<div class="area-item col-lg-3 col-6"><span>北海道</span>
+					<%= link_to image_tag('img_hokkaido.jpg', class: "area-image"), {:controller=>"rooms", :action=>"search", :q=>{:address_cont=>'北海道'}} %>
+				</div>
+				<div class="area-item col-lg-3 col-6"><span>東京</span>
+					<%= link_to image_tag('img_tokyo.jpg', class: "area-image"), {:controller=>"rooms", :action=>"search", :q=>{:address_cont=>'東京'}} %>
+				</div>
+				<div class="area-item col-lg-3 col-6"><span>大阪</span>
+					<%= link_to image_tag('img_osaka.jpg', class: "area-image"), {:controller=>"rooms", :action=>"search", :q=>{:address_cont=>'大阪'}} %>
+				</div>
+				<div class="area-item col-lg-3 col-6"><span>沖縄</span>
+					<%= link_to image_tag('img_okinawa.jpg', class: "area-image"), {:controller=>"rooms", :action=>"search", :q=>{:address_cont=>'沖縄'}} %>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>

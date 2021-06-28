@@ -1,0 +1,41 @@
+<%= render "shared/flash" %>
+<div class="container room-show">
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @room.room_image.url, class: "room-show-image", alt: "ルーム画像" %>
+      <div class="room-show-detail">
+        <div class="room-show-detail-icon">
+          <%= link_to image_tag(@room.user.image.url, class: "host-icon"), users_path %>
+        </div>
+        <div class="room-show-profile">
+          <p class="room-show-profile-name"><%= @room.room_name %></p>
+          <p class="room-show-profile-address"><%= @room.address %></p>
+        </div>
+      </div>
+      <p class="room-show-detail-introduction"><%= @room.room_introduction %></p>
+    </div>
+    <div class="col-md-4">
+    <%= render "shared/error", obj: @reservation %>
+      <div class="room-show-nav">
+        <h5 class="price-icon"><%= "#{@room.fee} / 日" %></h5>
+        <div class="room-show-date-select">
+          <%= form_with(model: @reservation, local: true, url: confirm_reservations_path(user_id: current_user.id, room_id: @room.id)) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.label :start_date, "開始日" %>
+            <%= f.date_field :start_date, class: "form-control mb-4" %>
+            <%= f.label :end_date, "終了日" %>
+            <%= f.date_field :end_date, class: "form-control mb-4" %>
+            <%= f.label :number_of_people, "人数" %>
+            <%= f.number_field :number_of_people, class: "form-control mb-4" %>
+            <% if user_signed_in? %>
+              <%= f.submit "予約する", class: "btn btn-primary form-control" %>
+            <% else %>
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary form-control" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

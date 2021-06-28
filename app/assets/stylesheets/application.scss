@@ -1,0 +1,512 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+ 
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 180px;
+}
+body, p, ol, ul ,td {
+  font-size: 13px;
+  line-height: 18px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  font-size: 13px;
+  width: 100%;
+  padding-top: 90px;
+  margin-top: 60px;
+  height: 180px;
+  background-color: #000;
+  color: #fff;
+  box-sizing: border-box;
+  
+  text-align: center;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.required-a::after {
+  content: "必須";
+  color: #fff;
+  background-color: #ff0000a8;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 0 5px;
+}
+.notification {
+  color: #fff;
+  text-align: center;
+}
+.notification .notice {
+  background-color: lightblue;
+  margin: 0;
+}
+.notification .alert {
+  background-color: rgb(228, 90, 90);
+  margin: 0;
+  padding: 0;
+}
+.clearfix {
+  background-color: #000;
+}
+/*---------------------------
+  header
+----------------------------*/
+.header {
+  width: 100%;
+  height: 70px;
+  padding: 5px 30px;
+  background-color: #000;
+  color: #fff;
+}
+.header-nav-left {
+  float: left;
+}
+.header-nav-left form {
+  display: inline-block;;
+}
+.header-search {
+  position: relative;
+}
+.header i {
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  font-size: 18px;
+  color: #000;
+}
+.header-nav-left .form-control {
+  width:180px;
+  display: inline-block;
+  position: relative;
+  border-radius: 2px;
+  padding-left: 30px;
+}
+.header-nav-right {
+  float: right;
+}
+.nav-item {
+  display: inline-block;
+  font-size: 14px;
+}
+.host-icon {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+.dropdown-menu {
+  padding: 15px;
+  border-radius: 0;
+  min-width: 190px;
+  position: absolute;
+  top: 35%;
+  border: 3px solid rgba(0, 0, 0, 0.05);
+}
+.dropdown-menu li {
+  line-height: 30px;
+  padding: 3px 5px;
+}
+.dropdown-menu a {
+  color: #000;
+}
+.dropdown-menu a:hover {
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+/*---------------------------
+  users
+----------------------------*/
+.user-nav {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 15px 30px 0;
+}
+.user-nav li {
+  font-size: 18px;
+  padding: 10px;
+}
+.user-nav li a:hover {
+  color: #4a90e2;
+  text-decoration: none;
+}
+.user-nav-pc {
+  height: 100vh;
+}
+.user-nav-pc .active {
+  border-right: 3px solid #4a90e2;
+}
+.active a {
+  color: #4a90e2;
+}
+.user-nav-mobile li {
+  float:left;
+}
+.user-nav-mobile .active {
+  border-bottom: 3px solid #4a90e2;
+}
+.user-view {
+  background-color: #f6f8f9;
+  border-left: 2px solid #e2e2e2;
+}
+.user-view-box {
+  max-width: 880px;
+  background-color: #fff;
+  border: 1px solid #eaedef;
+  margin: 30px auto;
+}
+.user .update-content {
+  border-bottom: 1px solid #eaedef;
+  padding: 20px;
+  margin: 0 15px;
+  font-size: 16px;
+}
+.user .update-content label {
+  font-weight: bold;
+}
+.user .icon-box {
+  text-align: center;
+}
+/*---------------------------
+  log_in, user_new
+----------------------------*/
+.device p {
+  font-size: 16px;
+}
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+.required-b::before {
+  content: "必須";
+  color: #fff;
+  background-color: #ff0000a8;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 0 5px;
+}
+.device a {
+  color: #007bff;
+}
+
+/*---------------------------
+  user_edit
+----------------------------*/
+.device {
+  padding-top: 36px;
+  font-size: 16px;
+}
+.device-frame {
+  max-width: 600px;
+  text-align: center;
+  padding: 24px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgb(21, 27, 38 / 15%) 0px 1px 3px 0px;
+}
+.device-inner {
+  width: 360px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+/*---------------------------
+  top-page
+----------------------------*/
+.top .top-main {
+  background-image: url("top_image.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+}
+.top .form-frame {
+  height: 650px;
+  display: flex;
+  align-items: center;
+}
+.top .form-area {
+  background: #fff;
+  padding: 25px;
+  border-radius: 5px;
+}
+.top .form-area-title {
+  font-size: 28px;
+  line-height: 35px;
+  letter-spacing: 1px;
+}
+.top .section-title {
+  font-size: 24px;
+  margin: 35px 0;
+  font-weight: bold;
+}
+.top span {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-weight: bold;
+  z-index: 1;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+}
+.top .area-image {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+/*---------------------------
+  room_new
+----------------------------*/
+.room-new{
+  width: 100%;
+}
+.room-nav {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 15px;
+}
+.room-nav li {
+  font-size: 18px;
+  padding: 10px;
+}
+.room-nav li a:hover {
+  color: #4a90e2;
+  text-decoration: none;
+}
+.room-nav-pc {
+  height: 100vh;
+}
+.room-nav-pc .active {
+  border-right: 3px solid #4a90e2;
+}
+.room-nav-mobile {
+  height: auto;
+}
+.room-nav-mobile li {
+  float:left;
+}
+.room-nav-mobile .active {
+  border-bottom: 3px solid #4a90e2;
+}
+.room-view {
+  background-color: #f6f8f9;
+  border-left: 2px solid #e2e2e2;
+}
+.room-view-box {
+  max-width: 880px;
+  background-color: #fff;
+  border: 1px solid #eaedef;
+  margin: 50px auto;
+}
+.room-new .update-content {
+  border-bottom: 1px solid #eaedef;
+  padding: 20px;
+  margin: 0 15px;
+  font-size: 16px;
+}
+.field_with_errors {
+  display: contents;
+  input, textarea {
+    @extend .is-invalid;
+  }
+}
+/*---------------------------
+  room_show, reservation_new
+----------------------------*/
+.room-show, .reservations-new {
+  padding: 30px 0;
+}
+.room-show-image, .reservations-new-image {
+  width: 100%;
+  object-fit: contain;
+}
+.room-show-detail, .reservations-new-detail {
+  display: flex;
+  align-items: center;
+}
+.room-show-detail-icon,
+.reservations-new-detail-icon {
+  padding: 10px;
+}
+.room-show-profile,
+.reservations-new-profile {
+  padding: 15px;
+}
+.room-show-profile-name,
+.reservations-new-profile-name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+.room-show-profile-address,
+.reservations-new-profile-address {
+  font-size: 14px;
+}
+.room-show-detail-introduction,
+.reservations-new-detail-introduction {
+  font-size: 16px;
+  line-height: 30px;
+  padding: 30px 10px;
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+  word-break: break-all;
+}
+.room-show-nav,
+.reservations-new-nav {
+  padding: 20px;
+  border: 1px solid #eaedef;
+}
+.room-show-date-select,
+.reservations-new-date-select {
+  padding: 15px 0;
+}
+.room-show-check-content,
+.reservations-new-check-content {
+  border-bottom: 1px solid #eaedef;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+
+/*---------------------------
+  room_index, reservation_index
+----------------------------*/
+table {
+  border-collapse: collapse;
+}
+.room-index,.reservations {
+  max-width: 100vw;
+  padding: 30px 60px;
+}
+.room-index table,.reservations table {
+  min-width: 800px;
+}
+.room-index table thead tr,
+.reservations table thead tr {
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+}
+.room-index table thead th,
+.reservations table thead th {
+  padding: 8px 15px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.room-index table tbody tr,
+.reservations table tbody tr {
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+}
+.room-index table tbody th,
+.reservations table tbody th {
+  padding: 10px;
+}
+.room-index table tbody td,
+.reservations table tbody td {
+  padding: 10px;
+}
+.room-index-image,
+.reservations-image {
+  width: 240px;
+  height: 140px;
+  
+  object-fit: cover;
+}
+.room-index table tbody .index-name,
+.reservations table tbody .index-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+.room-index table tbody a,
+.reservations table tbody a {
+  color: #4a90e2;
+  text-decoration: underline;
+}
+.room-index table tbody .index-content,
+.reservations table tbody .index-content {
+  max-width: 400px;
+}
+.price-icon::before {
+  content: "¥";
+  padding-right: 3px;
+}
+/*---------------------------
+  search
+----------------------------*/
+.room {
+  padding: 30px 60px;
+}
+.room-frame-inner {
+  border: 1px solid #e2e2e2;
+  margin-bottom: 10px;
+}
+.room-image-out {
+  position: relative;
+  width: 100%;
+  background: #F6F8F9;
+  height: 200px;
+}
+.room-image {
+  width: 100%;
+  height: 180px;
+  position: absolute;
+  top: 20px;
+  object-fit: cover;
+}
+.room-profile {
+  width: 100%;
+  padding: 15px;
+}
+.room-profile-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #909090;
+}
+.room-profile-address {
+  font-size: 16px;
+  font-weight: bold;
+}
+.room-profile-price {
+  text-align: right;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+a:hover {
+  text-decoration: none;
+  color: #333333;
+}

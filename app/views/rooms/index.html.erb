@@ -1,0 +1,35 @@
+<%= render "shared/flash" %>
+<div class="container-fluid room-index">
+  <h4 class="pb-4">登録済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成日</th>
+      <%#  <th>削除</th>%>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @rooms.count > 0 %>
+        <% @rooms.each do |room| %>
+          <tr>
+            <td><%= link_to image_tag(room.room_image.url, class: "room-index-image"), room_path(id: room.id) %></td>
+            <td class="index-name"><%= link_to room.room_name, room_path(id: room.id) %></td>
+            <td class="index-content"><%= room.room_introduction %></td>
+            <td class="price-icon"><%= room.fee %></td>
+            <td><%= room.created_at.to_s(:datetime) %></td>
+            <td>
+    	        <%#= link_to "削除", room, method: :delete, data: { confirm:"本当に削除しますか？"} %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <td colspan="9">現在登録している部屋はありません</td>
+      <% end %>
+    <tbody>
+  </table>
+</div>

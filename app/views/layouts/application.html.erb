@@ -8,9 +8,53 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/348a90c098.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <header class="header">
+      <div class="header-nav-left">
+        <%= link_to image_tag('logo.png', alt: 'サイトのロゴ'), :users %>
+        <%= search_form_for @q, url: search_rooms_path do |f| %>
+          <div class="header-search d-lg-inline-block d-none">
+            <%= f.search_field :address_cont, class: "form-control", placeholder: "エリア" %>
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="header-search d-lg-inline-block d-none">
+            <%= f.search_field :room_name_or_room_introduction_or_address_cont, class: "form-control", placeholder: "キーワード" %>
+            <i class="fas fa-search"></i>
+          </div>
+          <%= f.submit "", class: "d-none" %>
+        <% end %>
+      </div>
+      <div class="header-nav-right">
+        <% if user_signed_in? %>
+          <div class="nav-item d-sm-inline-block d-none"><%= current_user.name %></div>
+          <div class="dropdown nav-item">
+          <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-offset="18,22"><%= image_tag current_user.image.url, class: "host-icon mx-3 p-1" %></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to "ルーム登録", new_room_path %></li>
+              <li><%= link_to "予約済みルーム一覧", reservations_path %></li>
+              <li><%= link_to "登録済みルーム一覧", rooms_path %></li>
+              <li><%= link_to "設定", user_path(id: current_user.id) %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary my-2 mx-3" %>
+          </div>
+        <% end %>
+      </div>
+    </header>
+    <div class="clearfix"></div>
     <%= yield %>
+    <footer class="footer">
+      <p>©︎ 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>
