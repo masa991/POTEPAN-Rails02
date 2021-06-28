@@ -1,0 +1,35 @@
+<%= render "shared/flash" %>
+<div class="container-fluid reservations">
+  <h4 class="pb-4">予約済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>予約確定日時</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% if @reservations.count > 0 %>
+        <% @reservations.zip(@rooms).each do |reservation, room| %>
+          <tr>
+            <td><%= link_to image_tag(reservation.room.room_image.url, class: "reservations-image"), room_path(id: reservation.room.id) %></td>
+            <td class="index-name"><%= link_to reservation.room.room_name, room_path(id: reservation.room.id) %></td>
+            <td class="index-content"><%= reservation.room.room_introduction %></td>
+            <td class="price-icon"><%= reservation.total_fee %></td>
+            <td><%= reservation.start_date.to_s %></td>
+            <td><%= reservation.end_date.to_s %></td>
+            <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <td colspan="9">現在予約している部屋はありません</td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

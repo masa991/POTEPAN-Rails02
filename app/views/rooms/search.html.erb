@@ -1,0 +1,21 @@
+<div class="container-fluid room">
+  <h4 class="pb-4"><%= @count_display %></h4>
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <div class="col-sm-6 col-lg-4 col-xl-3" >
+        <div class="room-frame-inner">
+          <%= link_to room_path(id: room.id) do %>
+            <div class="room-image-out">
+              <%= image_tag(room.room_image.url, class: "room-image", alt: "ルーム画像") %>
+            </div>
+            <div class="room-profile">
+              <p class="room-profile-name"><%= room.room_name %></p>
+              <p class="room-profile-address"><%= room.address %></p>
+              <p class="room-profile-price price-icon"><%= room.fee %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
